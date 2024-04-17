@@ -1,0 +1,25 @@
+.form {
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(87, 87, 233);
+}
+
+.form > input {
+  width: 400px;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: black;
+}
+
+.form > button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.form > button:hover {
+  border: none;
+}

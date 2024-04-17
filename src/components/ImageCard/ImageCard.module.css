@@ -1,0 +1,14 @@
+.element > img {
+  width: 400px;
+  height: 275px;
+  object-fit: cover;
+}
+
+.element {
+  border: 2px solid white;
+}
+
+.element > p {
+  padding: 5px 10px 5px 10px;
+  color: white;
+}
