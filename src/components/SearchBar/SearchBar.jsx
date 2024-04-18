@@ -1,4 +1,4 @@
-import toast from "react-hot-toast";
+import toast, {Toaster} from "react-hot-toast";
 import { FiSearch } from "react-icons/fi";
 import css from "./SearchBar.module.css"
 
@@ -14,7 +14,7 @@ const SearchBar = ({ onSubmit }) => {
         const form = evt.target;
         const inputValue = form.elements.search.value.trim();
 
-        if (inputValue !== "" ) {
+        if (inputValue !== "") {
             onSubmit({
                 query: inputValue,
             })
@@ -34,6 +34,7 @@ const SearchBar = ({ onSubmit }) => {
                     <FiSearch  size="15" color="black"/>
                    </button> 
            <input type="text" autoComplete="off" autoFocus placeholder="Search images" name="search"/>     
+           <Toaster />
                 
         </form>
         </>
