@@ -1,0 +1,15 @@
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.loadMoreWrapper > button {
+  padding: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid white;
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+}

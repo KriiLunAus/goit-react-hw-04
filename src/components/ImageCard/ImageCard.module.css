@@ -2,6 +2,7 @@
   width: 400px;
   height: 275px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .element {

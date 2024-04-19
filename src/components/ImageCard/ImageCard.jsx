@@ -1,11 +1,11 @@
 import css from "./ImageCard.module.css"
 
 
-const ImageCard = ({links, alt, likes, user}) => {
+const ImageCard = ({ onModal, links, alt, likes, user, id}) => {
     
     return (
         <div className={css.element} >
-            <img src={links.small} alt={alt} />
+            <img onClick={()=> onModal(id)} src={links.small} alt={alt} />
             <p>Author: { user.name }</p>
             <p>Likes: { likes }</p>
 

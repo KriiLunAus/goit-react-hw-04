@@ -1,10 +1,10 @@
-
+import css from "./LoadMoreBtn.module.css"
 
 const LoadMoreBtn = ({ onClick }) => {
     return (
-    <>
-    <button onClick={onClick}>Load more</button>
-    </>)
+    <div className={css.loadMoreWrapper}>
+    <button  onClick={onClick}>Load more</button>
+    </div>)
         
 }
     

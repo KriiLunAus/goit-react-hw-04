@@ -1,6 +1,8 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css"
-const ImageGallery = ({ photos }) => {
+
+const ImageGallery = ({ photos, onModal }) => {
+    
     return (
         <div className={css.listWrapper}>
         <ul className={css.photoList}>
@@ -9,7 +11,7 @@ const ImageGallery = ({ photos }) => {
                     return (
                         
                     <li key={id}>
-                        <ImageCard links = {urls} alt = {alt_description} user={user}  likes = { likes } />
+                        <ImageCard onModal={onModal} links = {urls} alt = {alt_description} user={user} id={id}  likes = {likes} />
                     </li>
             )
                 })}

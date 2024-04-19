@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import fetchPhotosWithQuery from "../src/photos-api.js";
 import SearchBar from "./components/SearchBar/SearchBar.jsx";
-import { DNA } from 'react-loader-spinner';
-import Modal from 'react-modal';
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
 import ErrorElement from "./components/ErrorElement/ErrorElement.jsx";
 import ImageModal from "./components/ImageModal/ImageModal.jsx";
+import Loader from "./components/Loader/Loader.jsx";
 
-Modal.setAppElement('#root');
 
 
 const App = () => {
@@ -19,18 +17,7 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-
-
-
+  const [imgId, setImgId] = useState("")
 
       useEffect(() => {
         if (query !== "") {
@@ -63,32 +50,35 @@ const App = () => {
     setQuery(
       inputValue.query);
     setCurrentPage(1);
+    setPhotos([])
   }
 
   const handleLoadMore = () => {
   setCurrentPage(prevPage => prevPage + 1);
-};
+  };
   
+  const openModal = () => {
+    setIsOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsOpen(false)
+  }
+
+  const onModal = (imageId) => {
+    setImgId(imageId);
+    openModal()
+}
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-      
-      <div  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        
-          {loading && <DNA
-          height="80"
-          width="80"
-          ariaLabel="dna-loading"
-          wrapperClass="dna-wrapper"
-        />}
-      </div>
-
+      <Loader loading={loading}/>
       {error && <ErrorElement />}
 
-      {photos.length > 0 &&<ImageGallery  photos={photos} />}
+      {photos.length > 0 &&<ImageGallery  onModal={onModal}  photos={photos} />}
 
       {query && <LoadMoreBtn onClick={handleLoadMore } />}
-      <ImageModal onOpen={openModal} onClose={closeModal} modalIsOpen={modalIsOpen} />
+      <ImageModal photos={photos} imgId={imgId} onClose={closeModal} modalIsOpen={modalIsOpen} />
     </>
   )
 };
